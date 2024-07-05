@@ -46,6 +46,24 @@ nav {
     color: #f4a261;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: transform 0.3s ease;
+} 
+
+
+
+
+
 /* Banner Section */
 .banner {
     height: 100%;
@@ -161,4 +179,40 @@ footer p {
     .card {
         width: 90%;
     }
+
+
+
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 0;
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 18px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+
 }
+
+
