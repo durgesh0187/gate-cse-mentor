@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #4d4a4a;
+    }
+
+    .slider-image {
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="text-white bg-black min-h-screen w-full flex items-center justify-center">
+
+  <div class="flex flex-col md:flex-row w-full h-screen p-4 gap-4">
+
+    <!-- LEFT: YouTube Video Player -->
+    <div class="w-full md:w-2/3 flex flex-col justify-center">
+      <iframe 
+        id="player"
+        class="w-full h-full aspect-video rounded-xl shadow-xl"
+        src=""
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+
+      <!-- Controls -->
+      <div class="flex justify-center space-x-4 mt-6">
+        <button onclick="prevVideo()" class="bg-white text-gray-800 font-bold py-2 px-4 rounded-lg shadow hover:bg-gray-200 transition">⬅ Prev</button>
+        <button onclick="nextVideo()" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">Next ➡</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Auto Slide Image Gallery -->
+    <div class="w-full md:w-1/3 flex justify-center items-center relative">
+      <img id="sliderImage" src="" class="slider-image w-full h-full object-cover rounded-xl shadow-2xl" />
+    </div>
+
+  </div>
+
+  <script>
+   const playlist = [
+  "tDZtcw3RA1E",
+  "n992LuRQV6s",
+  "vM-LITaS--o",
+  "gDWBsH8C-Mw",
+  "3uBMl1HhSA8",
+  "cg_IpJadS98",
+  "SRfCyAFSTA4",
+  "gGMHEiFpHTo",
+  "pI3GznRblTU"
+];
+
+
+    const imagePaths = [
+      "img.jpg",
+      "img3.jpg",
+      "img4.jpg",
+      "img6.jpg"
+    ];
+
+    let currentIndex = 0;
+    let currentImageIndex = 0;
+
+    function loadVideo(index) {
+      const player = document.getElementById("player");
+      player.src = `https://www.youtube.com/embed/${playlist[index]}?autoplay=1&rel=0&enablejsapi=1`;
+    }
+
+    function nextVideo() {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      loadVideo(currentIndex);
+    }
+
+    function prevVideo() {
+      currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+      loadVideo(currentIndex);
+    }
+
+    // Auto-Slide Image every 10 sec
+    function startImageSlider() {
+      const img = document.getElementById("sliderImage");
+      setInterval(() => {
+        img.classList.add("fade-out");
+        setTimeout(() => {
+          currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+          img.src = imagePaths[currentImageIndex];
+          img.classList.remove("fade-out");
+        }, 1000);
+      }, 10000);
+    }
+
+    // Swipe detection for mobile
+    let touchStartX = 0;
+    document.body.addEventListener("touchstart", e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.body.addEventListener("touchend", e => {
+      const deltaX = e.changedTouches[0].screenX - touchStartX;
+      if (deltaX > 50) prevVideo();
+      else if (deltaX < -50) nextVideo();
+    });
+
+    // YouTube Iframe API Setup for Auto-Next
+    window.onYouTubeIframeAPIReady = function () {
+      new YT.Player('player', {
+        events: {
+          onStateChange: function (e) {
+            if (e.data === YT.PlayerState.ENDED) {
+              nextVideo();
+            }
+          }
+        }
+      });
+    };
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    // Load first video and image
+    window.onload = () => {
+      loadVideo(currentIndex);
+      document.getElementById("sliderImage").src = imagePaths[currentImageIndex];
+      startImageSlider();
+    };
+  </script>
+</body>
+</html>
