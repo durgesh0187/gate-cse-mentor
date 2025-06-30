@@ -21,7 +21,7 @@ let reviewFlags = Array(questions.length).fill(false);
 window.onload = () => {
   renderPalette();
   showQuestion(current);
-  startTimer(60);
+  startTimer(180);
 };
 
 function renderPalette() {
