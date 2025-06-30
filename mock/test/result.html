@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock Test Result | GATE Mentor</title>
+  <link rel="stylesheet" href="result.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="result.js"></script>
+</head>
+<body>
+  <div class="result-container">
+    <h1>📊 Mock Test Result</h1>
+    <div class="summary">
+      <p><strong>Total Questions:</strong> <span id="totalQ">0</span></p>
+      <p><strong>Attempted:</strong> <span id="attempted">0</span></p>
+      <p><strong>Correct:</strong> <span id="correct">0</span></p>
+      <p><strong>Wrong:</strong> <span id="wrong">0</span></p>
+      <p><strong>Score:</strong> <span id="score">0</span></p>
+      <p id="feedbackEmoji"></p>
+      <canvas id="chartCanvas" width="300" height="300"></canvas>
+    </div>
+
+    <div id="questionReview"></div>
+
+    <button onclick="window.location.href='test.html'">🏠 Back to Mock Tests</button>
+  </div>
+</body>
+</html>

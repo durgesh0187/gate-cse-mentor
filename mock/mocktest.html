@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock Tests | GATE Mentor</title>
+  <link rel="stylesheet" href="mocktest.css">
+  <script defer src="mocktest.js"></script>
+</head>
+<body>
+  <div class="main-container">
+    <h1>🧠 GATE Mentor Mock Tests</h1>
+
+    <!-- Subject-wise -->
+    <section class="category">
+      <h2 onclick="toggleSection(this)">📘 Subject-wise Tests ⬇</h2>
+      <div class="test-grid">
+        <div class="test-card" onclick="startTest('DBMS')">Aptitude</div>
+        <div class="test-card" onclick="startTest('OS')">Operating Systems Test 1</div>
+        <div class="test-card" onclick="startTest('CN')">Computer Networks Test 1</div>
+        <!-- Add more -->
+      </div>
+    </section>
+
+    <!-- Year-wise -->
+    <section class="category">
+      <h2 onclick="toggleSection(this)">📅 Year-wise GATE Tests ⬇</h2>
+      <div class="test-grid">
+        <div class="test-card" onclick="startTest('gate25')">GATE 2025-Set 2</div>
+        <div class="test-card" onclick="startTest('GATE2023')">GATE 2023</div>
+        <!-- Add more -->
+      </div>
+    </section>
+
+    <!-- ISRO -->
+    <section class="category">
+      <h2 onclick="toggleSection(this)">🚀 ISRO Mock Tests ⬇</h2>
+      <div class="test-grid">
+        <div class="test-card" onclick="startTest('ISRO2023')">ISRO 2023</div>
+        <!-- Add more -->
+      </div>
+    </section>
+
+    <!-- Other Exams -->
+    <section class="category">
+      <h2 onclick="toggleSection(this)">📝 Other Exams ⬇</h2>
+      <div class="test-grid">
+        <div class="test-card" onclick="startTest('BARC')">BARC</div>
+        <div class="test-card" onclick="startTest('DRDO')">DRDO</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

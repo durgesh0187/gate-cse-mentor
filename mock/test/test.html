@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GATE Mock Test</title>
+  <link rel="stylesheet" href="test.css">
+  <script defer src="test.js"></script>
+</head>
+<body style="background-image: url('iit.jpg'); background-size: cover; background-position: center;">
+  <div class="test-container">
+    <header>
+      <h1>GATE Mock Test - DBMS</h1>
+      <div id="timer">Time Left: <span id="countdown">60:00</span></div>
+
+      <button onclick="openTCSCalculator()">🧮 Open GATE Calculator</button>
+
+    </header>
+
+    <main>
+      <aside class="question-palette">
+        <h3>Questions</h3>
+        <div id="palette"></div>
+      </aside>
+
+      <section class="question-area">
+        <div id="questionBox">
+          <h2 id="questionText">Loading...</h2>
+          <div id="options"></div>
+        </div>
+
+        <div class="buttons">
+          <button onclick="markForReview()">Mark for Review</button>
+          <button onclick="clearSelection()">Clear</button>
+          <button onclick="nextQuestion()">Save & Next</button>
+        </div>
+
+        <button id="submitBtn" onclick="submitTest()">Submit Test</button>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>
