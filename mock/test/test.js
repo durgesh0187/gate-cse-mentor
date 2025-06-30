@@ -7,7 +7,7 @@ script.onload = () => {
   window.onload = () => {
     renderPalette();
     showQuestion(0);
-    startTimer(60);
+    startTimer(180);
   };
 };
 document.head.appendChild(script);
@@ -129,12 +129,12 @@ function submitTest() {
 }
 
 function startTimer(minutes) {
-  let time = minutes * 60;
+  let time = minutes * 180;
   const countdown = document.getElementById("countdown");
 
   const timer = setInterval(() => {
-    const min = Math.floor(time / 60);
-    const sec = time % 60;
+    const min = Math.floor(time / 180);
+    const sec = time % 180;
     countdown.innerText = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     time--;
 
